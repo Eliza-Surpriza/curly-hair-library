@@ -83,10 +83,10 @@ const structure = {
   routine: {
     label: 'Routine',
     children: {
-      'Washing': {
-        label: 'Washing',
+      'Wash': {
+        label: 'Wash',
         groups: {
-          'Washing': [
+          'Wash': [
             'Clarifying & Detox Shampoo',
             'Sulfate-free shampoo',
             'Hydrating Shampoo',
@@ -105,10 +105,10 @@ const structure = {
           ]
         }
       },
-      'Drying': {
-        label: 'Drying',
+      'Dry': {
+        label: 'Dry',
         groups: {
-          'Drying': [
+          'Dry': [
             'Micro-fiber hair towel',
             '"Plopping" instructions',
             'Cotton t-shirt',
@@ -122,10 +122,10 @@ const structure = {
           ]
         }
       },
-      'Styling': {
-        label: 'Styling',
+      'Style': {
+        label: 'Style',
         groups: {
-          'Styling': [
+          'Style': [
             'Curl defining brush',
             'Finger styling instructions',
             'Curl cream',
@@ -143,10 +143,10 @@ const structure = {
           ]
         }
       },
-      'Sleeping': {
-        label: 'Sleeping',
+      'Sleep': {
+        label: 'Sleep',
         groups: {
-          'Sleeping': [
+          'Sleep': [
             'Silk pillowcase',
             'Silk bonnet',
             'Satin scrunchies',
@@ -156,10 +156,10 @@ const structure = {
           ]
         }
       },
-      'Touch up': {
-        label: 'Touch up',
+      'Refresh': {
+        label: 'Refresh',
         groups: {
-          'Touch up': [
+          'Refresh': [
             'Tips for refreshing curls',
             'Continuous spray bottle for water',
             'Hair oil',
