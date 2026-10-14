@@ -238,7 +238,7 @@ function renderNavigation() {
       </div>
       <div class="search-container">
         <input type="text" class="search-bar" id="search-input" placeholder="search" />
-        <span class="search-icon">🔍</span>
+        <span class="search-icon">⊙</span>
       </div>
     </div>
   `;
