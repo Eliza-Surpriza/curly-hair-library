@@ -72,6 +72,7 @@ button {
   padding: 0;
   border-bottom: 3px wavy #532618;
   padding-bottom: 20px;
+  justify-content: flex-end;
 }
 
 .quick-browse-label {
@@ -84,7 +85,6 @@ button {
 .nav-category-group {
   display: flex;
   gap: 12px;
-  flex: 1;
   position: relative;
   align-items: center;
 }
