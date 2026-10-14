@@ -205,11 +205,11 @@ button {
   text-decoration: none;
   display: block;
   font-size: 14px;
-  transition: background 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .dropdown-item:hover {
-  background: #3d1a0f;
+  color: #98623f;
 }
 
 .routine-label {
