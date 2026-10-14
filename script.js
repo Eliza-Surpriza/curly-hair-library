@@ -211,6 +211,7 @@ const state = {
 function renderNavigation() {
   const navHtml = `
     <div class="mode-controls">
+      <div class="quick-browse-label">* quick browse *</div>
       <div class="nav-category-group">
         <div class="nav-category">
           <button class="mode-toggle" data-category="products">products</button>

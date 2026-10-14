@@ -72,7 +72,6 @@ button {
   padding: 0;
   border-bottom: 3px wavy #532618;
   padding-bottom: 20px;
-  justify-content: flex-end;
 }
 
 .quick-browse-label {
@@ -80,6 +79,7 @@ button {
   font-weight: 700;
   color: #532618;
   margin: 0;
+  margin-right: auto;
 }
 
 .nav-category-group {
@@ -87,6 +87,7 @@ button {
   gap: 12px;
   position: relative;
   align-items: center;
+  margin: 0;
 }
 
 .nav-category {
@@ -125,6 +126,7 @@ button {
 .search-container {
   position: relative;
   flex: 0 1 auto;
+  margin-left: -8px;
 }
 
 .mode-toggle {
