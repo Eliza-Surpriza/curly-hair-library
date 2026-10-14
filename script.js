@@ -238,7 +238,10 @@ function renderNavigation() {
       </div>
       <div class="search-container">
         <input type="text" class="search-bar" id="search-input" placeholder="search" />
-        <span class="search-icon">⊙</span>
+        <svg class="search-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="14" y1="14" x2="20" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </div>
     </div>
   `;
