@@ -350,11 +350,37 @@ function renderBreadcrumb(path) {
   return `<div class="breadcrumb">${breadcrumbItems}</div>`;
 }
 
+function renderCategoryGroupPage(category) {
+  const categoryData = structure.type.children[category];
+  if (!categoryData) {
+    return renderHome();
+  }
+
+  const groupsHtml = Object.keys(categoryData.groups)
+    .map(groupName => `
+      <div class="item-card" data-group-category="${category}" data-group-name="${groupName}">
+        ${groupName}
+      </div>
+    `)
+    .join('');
+
+  return `
+    ${renderNavigation()}
+    ${renderBreadcrumb(['home', category])}
+    <h1 class="page-title">${category}</h1>
+    <div class="item-grid">
+      ${groupsHtml}
+    </div>
+  `;
+}
+
 function render() {
   let content = '';
 
   if (state.currentView === 'home') {
     content = renderHome();
+  } else if (state.currentView === 'categoryGroup') {
+    content = renderCategoryGroupPage(state.currentCategory);
   } else if (state.currentView === 'category') {
     content = renderCategoryPage(state.currentCategory, state.currentGroup);
   } else if (state.currentView === 'routine') {
@@ -403,8 +429,20 @@ function attachEventListeners() {
     });
   });
 
+  // Category group cards (show groups within a category)
+  document.querySelectorAll('[data-group-category]').forEach(card => {
+    card.addEventListener('click', () => {
+      const category = card.dataset.groupCategory;
+      const group = card.dataset.groupName;
+      state.currentView = 'category';
+      state.currentCategory = category;
+      state.currentGroup = group;
+      render();
+    });
+  });
+
   // Item cards
-  document.querySelectorAll('.item-card').forEach(card => {
+  document.querySelectorAll('.item-card:not([data-group-category])').forEach(card => {
     card.addEventListener('click', () => {
       const item = card.dataset.item;
       state.currentView = 'detail';
@@ -430,6 +468,9 @@ function attachEventListeners() {
       const target = link.dataset.breadcrumb;
       if (target === 'home') {
         state.currentView = 'home';
+      } else if (target === 'Product' || target === 'Tools' || target === 'Education') {
+        state.currentView = 'categoryGroup';
+        state.currentCategory = target;
       }
       render();
     });
