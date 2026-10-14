@@ -368,25 +368,16 @@ function render() {
 }
 
 function attachEventListeners() {
-  // Navigation category buttons
-  document.querySelectorAll('[data-category="products"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const dropdown = document.getElementById('products-dropdown');
-      dropdown.classList.toggle('active');
+  // Navigation category buttons - show dropdown on hover
+  document.querySelectorAll('.nav-category').forEach(category => {
+    const dropdown = category.querySelector('.dropdown-menu');
+    
+    category.addEventListener('mouseenter', () => {
+      dropdown.classList.add('active');
     });
-  });
-
-  document.querySelectorAll('[data-category="tools"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const dropdown = document.getElementById('tools-dropdown');
-      dropdown.classList.toggle('active');
-    });
-  });
-
-  document.querySelectorAll('[data-category="education"]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const dropdown = document.getElementById('education-dropdown');
-      dropdown.classList.toggle('active');
+    
+    category.addEventListener('mouseleave', () => {
+      dropdown.classList.remove('active');
     });
   });
 

@@ -89,6 +89,15 @@ button {
   align-items: center;
 }
 
+.nav-category {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-category:hover .dropdown-menu {
+  display: block;
+}
+
 .mode-toggle,
 .primary-button,
 .secondary-button,
