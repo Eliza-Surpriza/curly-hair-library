@@ -1,0 +1,11 @@
+id,prompt,target,viewKey,selectedKey,groupName
+1,"Find Clarifying & Detox Shampoo.","Clarifying & Detox Shampoo","type","Products","Shampoo/Conditioner"
+2,"Find Mousse.","Mousse","type","Products","Styling Products"
+3,"Find Diffuser.","Diffuser","type","Tools","Styling"
+4,"Find Silk pillowcase.","Silk pillowcase","type","Tools","Protecting"
+5,"Find “Plopping” instructions.","“Plopping” instructions","type","Education","Instructions"
+6,"Find Guidance for scalp health.","Guidance for scalp health","type","Education","Science"
+7,"Find the curly hair stylist influencer (professional experience).","Curly hair stylist influencer (professional experience)","type","Education","Influencers"
+8,"Find Satin scrunchie in the styling routine.","Satin scrunchie","routine","Styling","Styling"
+9,"Find Microfiber hair towel in the drying routine.","Microfiber hair towel","routine","Drying","Drying"
+10,"Find Hair Oil in the touch-up routine.","Hair Oil","routine","Touch up","Touch up"
