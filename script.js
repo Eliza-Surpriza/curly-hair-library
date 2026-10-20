@@ -737,7 +737,7 @@ function renderSearchResults(query) {
   } else {
     resultsHtml = results
       .map(result => `
-        <div class="item-card" data-item="${result.name}">
+        <div class="item-card" data-item="${result.name.replace(/"/g, '&quot;')}">
           ${result.name}
         </div>
       `)
