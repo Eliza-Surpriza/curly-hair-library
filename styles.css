@@ -658,7 +658,7 @@ button {
 
 .tm-task-text {
   margin: 4px 0 0;
-  font-size: 15px;
+  font-size: 22px;
   line-height: 1.4;
 }
 
@@ -919,6 +919,7 @@ button {
 .tm-chip-nav-button { background: #6b4228; }
 .tm-chip-dropdown { background: #7a4e32; }
 .tm-chip-curl-card { background: #5e3520; }
+.tm-chip-hover { border: 1px dashed #f8edd9; opacity: 0.85; }
 
 .tm-arrow {
   color: #98623f;

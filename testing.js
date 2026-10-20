@@ -134,7 +134,7 @@
     Object.assign(state, {
       active: true,
       participantId,
-      taskOrder: shuffle([...Array(TASKS.length).keys()]),
+      taskOrder: [...shuffle([0, 1, 2, 3, 4, 5]), 6],
       currentTaskIndex: 0,
       sessionStartTime: now,
       taskStartTime: now,
@@ -253,59 +253,106 @@
     });
   }
 
-  // ── Click Tracking ────────────────────────────────────
+  // ── Interaction Tracking ──────────────────────────────
 
-  function logClick(label, type) {
+  // Shared element resolver used by both click and hover tracking
+  function resolveInteractable(target) {
+    if (target.closest('#tm-task-banner, #tm-toggle-btn, #testing-modal-overlay')) return null;
+    if (target.closest('[data-curl-pattern]')) {
+      const el = target.closest('[data-curl-pattern]');
+      return { el, label: el.dataset.curlPattern, type: 'curl-card' };
+    }
+    if (target.closest('.routine-card')) {
+      const el = target.closest('.routine-card');
+      return { el, label: el.textContent.trim(), type: 'routine-card' };
+    }
+    if (target.closest('[data-group-name]')) {
+      const el = target.closest('[data-group-name]');
+      return { el, label: el.dataset.groupName, type: 'group-card' };
+    }
+    if (target.closest('[data-item]')) {
+      const el = target.closest('[data-item]');
+      return { el, label: el.dataset.item, type: 'search-result' };
+    }
+    if (target.closest('.item-card')) {
+      const el = target.closest('.item-card');
+      return { el, label: el.textContent.trim(), type: 'item-card' };
+    }
+    if (target.closest('.mode-toggle')) {
+      const el = target.closest('.mode-toggle');
+      return { el, label: el.dataset.category, type: 'nav-button' };
+    }
+    if (target.closest('.dropdown-item')) {
+      const el = target.closest('.dropdown-item');
+      return { el, label: `${el.dataset.category} › ${el.dataset.group}`, type: 'dropdown' };
+    }
+    if (target.closest('.breadcrumb-link')) {
+      const el = target.closest('.breadcrumb-link');
+      return { el, label: el.dataset.breadcrumb || el.textContent.trim(), type: 'breadcrumb' };
+    }
+    return null;
+  }
+
+  function logInteraction(label, type, action, extra = {}) {
     const now = Date.now();
     state.currentTaskClicks.push({
+      action,
       label,
       type,
       taskElapsed: Math.floor((now - state.taskStartTime) / 1000),
       sessionElapsed: Math.floor((now - state.sessionStartTime) / 1000),
       recordingTime: fmtDuration(now - state.sessionStartTime),
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      ...extra
     });
   }
 
+  function logClick(label, type) {
+    logInteraction(label, type, 'click');
+  }
+
+  const MIN_HOVER_MS = 500; // ignore accidental mouse passes under 500ms
+  const hoverMap = new Map();  // key -> hover start timestamp
+
   function attachTracking() {
-    // Click tracking via event delegation
+    // Click tracking
     document.addEventListener('click', (e) => {
       if (!state.active) return;
-      if (e.target.closest('#tm-task-banner, #tm-toggle-btn, #testing-modal-overlay')) return;
+      const info = resolveInteractable(e.target);
+      if (info) logClick(info.label, info.type);
+    }, true);
 
-      const t = e.target;
-      let label = '', type = '';
-
-      if (t.closest('[data-curl-pattern]')) {
-        label = t.closest('[data-curl-pattern]').dataset.curlPattern;
-        type = 'curl-card';
-      } else if (t.closest('.routine-card')) {
-        label = t.closest('.routine-card').textContent.trim();
-        type = 'routine-card';
-      } else if (t.closest('[data-group-name]')) {
-        label = t.closest('[data-group-name]').dataset.groupName;
-        type = 'group-card';
-      } else if (t.closest('[data-item]')) {
-        label = t.closest('[data-item]').dataset.item;
-        type = 'search-result';
-      } else if (t.closest('.item-card')) {
-        label = t.closest('.item-card').textContent.trim();
-        type = 'item-card';
-      } else if (t.closest('.mode-toggle')) {
-        label = t.closest('.mode-toggle').dataset.category;
-        type = 'nav-button';
-      } else if (t.closest('.dropdown-item')) {
-        const el = t.closest('.dropdown-item');
-        label = `${el.dataset.category} › ${el.dataset.group}`;
-        type = 'dropdown';
-      } else if (t.closest('.breadcrumb-link')) {
-        label = t.closest('.breadcrumb-link').dataset.breadcrumb || t.closest('.breadcrumb-link').textContent.trim();
-        type = 'breadcrumb';
-      } else {
-        return;
+    // Hover tracking — mouseover fires when entering, mouseout when leaving
+    document.addEventListener('mouseover', (e) => {
+      if (!state.active) return;
+      const info = resolveInteractable(e.target);
+      if (!info) return;
+      const key = info.type + ':' + info.label;
+      if (!hoverMap.has(key)) {
+        hoverMap.set(key, { startTime: Date.now(), el: info.el, label: info.label, type: info.type });
       }
+    }, true);
 
-      if (label) logClick(label, type);
+    document.addEventListener('mouseout', (e) => {
+      if (!state.active) return;
+      const info = resolveInteractable(e.target);
+      if (!info) return;
+      // Only log when mouse truly leaves the element (not just moving to a child)
+      if (info.el.contains(e.relatedTarget)) return;
+      const key = info.type + ':' + info.label;
+      const entry = hoverMap.get(key);
+      if (entry) {
+        hoverMap.delete(key);
+        const durationMs = Date.now() - entry.startTime;
+        if (durationMs >= MIN_HOVER_MS) {
+          logInteraction(entry.label, entry.type, 'hover', {
+            hoverDurationMs: durationMs,
+            hoverDuration: durationMs >= 1000
+              ? `${(durationMs / 1000).toFixed(1)}s`
+              : `${durationMs}ms`
+          });
+        }
+      }
     }, true);
 
     // Search tracking
@@ -330,11 +377,13 @@
       body = sessions.map((session) => {
         const tasksHtml = session.tasks.map(task => {
           const clicksHtml = task.clicks.length
-            ? task.clicks.map(c =>
-                `<span class="tm-chip tm-chip-${c.type}" title="${c.type}">
-                  <span class="tm-chip-time">${c.recordingTime}</span> ${c.label}
-                </span>`
-              ).join('<span class="tm-arrow">→</span>')
+            ? task.clicks.map(c => {
+                const isHover = c.action === 'hover';
+                const extra = isHover ? ` <em>(hovered ${c.hoverDuration})</em>` : '';
+                return `<span class="tm-chip tm-chip-${c.type}${isHover ? ' tm-chip-hover' : ''}" title="${c.action}: ${c.type}">
+                  <span class="tm-chip-time">${c.recordingTime}</span> ${c.label}${extra}
+                </span>`;
+              }).join('<span class="tm-arrow">→</span>')
             : '<span class="tm-no-clicks">No interactions recorded</span>';
 
           return `
@@ -387,11 +436,11 @@
 
   function exportCSV() {
     const sessions = getSessions();
-    const rows = [['Participant', 'Session Start', 'Task #', 'Task Text', 'Task Start (recording)', 'Task End (recording)', 'Task Duration', 'Recording Time', 'Interaction', 'Type', 'Task Elapsed (s)']];
+    const rows = [['Participant', 'Session Start', 'Task #', 'Task Text', 'Task Start (recording)', 'Task End (recording)', 'Task Duration', 'Recording Time', 'Action', 'Interaction', 'Type', 'Hover Duration', 'Task Elapsed (s)']];
     sessions.forEach(s => {
       s.tasks.forEach(t => {
         if (t.clicks.length === 0) {
-          rows.push([s.participantId, s.sessionStart, t.taskNumber, `"${t.taskText.replace(/"/g, '""')}"`, t.taskStartRecordingTime || '', t.taskEndRecordingTime || '', t.durationFormatted, '', '(no interactions)', '', '']);
+          rows.push([s.participantId, s.sessionStart, t.taskNumber, `"${t.taskText.replace(/"/g, '""')}"`, t.taskStartRecordingTime || '', t.taskEndRecordingTime || '', t.durationFormatted, '', '', '(no interactions)', '', '', '']);
         } else {
           t.clicks.forEach(c => {
             rows.push([
@@ -403,8 +452,10 @@
               t.taskEndRecordingTime || '',
               t.durationFormatted,
               c.recordingTime || '',
+              c.action || 'click',
               `"${c.label.replace(/"/g, '""')}"`,
               c.type,
+              c.hoverDuration || '',
               c.taskElapsed != null ? c.taskElapsed : (c.elapsed || '')
             ]);
           });

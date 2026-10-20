@@ -802,7 +802,33 @@ function renderCategoryGroupPage(category) {
   `;
 }
 
+let _historyInitialized = false;
+let _isPopState = false;
+
+function getStateSnapshot() {
+  return {
+    currentView: state.currentView,
+    navigationStack: state.navigationStack,
+    currentCategory: state.currentCategory,
+    currentGroup: state.currentGroup,
+    currentRoutine: state.currentRoutine,
+    currentItem: state.currentItem,
+    searchQuery: state.searchQuery,
+    fromChartPage: state.fromChartPage
+  };
+}
+
 function render() {
+  // Push a browser history entry so back/forward work
+  if (!_isPopState) {
+    if (!_historyInitialized) {
+      history.replaceState(getStateSnapshot(), '');
+      _historyInitialized = true;
+    } else {
+      history.pushState(getStateSnapshot(), '');
+    }
+  }
+
   let content = '';
 
   if (state.currentView === 'home') {
@@ -998,6 +1024,29 @@ function attachEventListeners() {
     }
   });
 }
+
+// Handle browser back/forward
+window.addEventListener('popstate', (e) => {
+  const snapshot = e.state;
+  if (!snapshot) {
+    // Navigated back before any history was pushed — go home
+    Object.assign(state, {
+      currentView: 'home',
+      navigationStack: [],
+      currentCategory: null,
+      currentGroup: null,
+      currentRoutine: null,
+      currentItem: null,
+      searchQuery: '',
+      fromChartPage: false
+    });
+  } else {
+    Object.assign(state, snapshot);
+  }
+  _isPopState = true;
+  render();
+  _isPopState = false;
+});
 
 // Initialize
 render();
