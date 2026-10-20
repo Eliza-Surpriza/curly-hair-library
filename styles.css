@@ -593,6 +593,362 @@ button {
   background: white;
 }
 
+/* ── Testing Framework ───────────────────────────────── */
+
+#tm-toggle-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  background: #532618;
+  color: #f8edd9;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 18px;
+  cursor: pointer;
+  font-family: 'Lilita One', cursive;
+  font-size: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  transition: background 0.2s;
+}
+
+#tm-toggle-btn:hover {
+  background: #3a1a0f;
+}
+
+#tm-toggle-btn.tm-active {
+  background: #f8edd9;
+  color: #532618;
+  border: 2px solid #532618;
+}
+
+/* Task Banner */
+#tm-task-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9000;
+  background: #532618;
+  color: #f8edd9;
+  padding: 12px 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.tm-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.tm-banner-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.tm-task-counter {
+  font-size: 12px;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.tm-task-text {
+  margin: 4px 0 0;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.tm-banner-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.tm-timer {
+  font-size: 22px;
+  min-width: 52px;
+  text-align: right;
+}
+
+.tm-next-btn {
+  background: #98623f;
+  color: #f8edd9;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 22px;
+  cursor: pointer;
+  font-family: 'Lilita One', cursive;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.tm-next-btn:hover {
+  background: #7a4e32;
+}
+
+/* Modal Overlay */
+#testing-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(83, 38, 24, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.tm-modal-box {
+  background: #f8edd9;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 460px;
+  width: 100%;
+  font-family: 'Lilita One', cursive;
+  color: #532618;
+}
+
+.tm-modal-wide {
+  max-width: 940px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.tm-modal-box h2 {
+  margin: 0 0 20px;
+  font-size: 22px;
+}
+
+.tm-modal-box p {
+  margin: 0 0 16px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.tm-modal-box label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+  opacity: 0.8;
+}
+
+.tm-modal-box input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 2px solid #98623f;
+  font-family: 'Lilita One', cursive;
+  font-size: 16px;
+  margin-bottom: 20px;
+  background: #f8edd9;
+  color: #532618;
+  outline: none;
+}
+
+.tm-modal-box input.tm-input-error {
+  border-color: #c0392b;
+}
+
+.tm-modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.tm-modal-buttons button,
+.tm-modal-box > button {
+  background: #98623f;
+  color: #f8edd9;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 22px;
+  cursor: pointer;
+  font-family: 'Lilita One', cursive;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.tm-modal-buttons button:hover,
+.tm-modal-box > button:hover {
+  background: #532618;
+}
+
+/* Results Panel */
+.tm-results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.tm-results-header h2 {
+  margin: 0;
+}
+
+.tm-results-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tm-results-actions button {
+  background: #98623f;
+  color: #f8edd9;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: 'Lilita One', cursive;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+
+.tm-results-actions button:hover {
+  background: #532618;
+}
+
+.tm-results-body {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.tm-no-results {
+  text-align: center;
+  opacity: 0.6;
+  font-size: 16px;
+}
+
+.tm-result-session {
+  margin-bottom: 28px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #98623f;
+}
+
+.tm-result-session-header {
+  background: #98623f;
+  color: #f8edd9;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tm-result-session-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.tm-result-session-header span {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.tm-result-task {
+  padding: 14px 18px;
+  border-top: 1px solid #ddd0b8;
+}
+
+.tm-result-task-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.tm-task-num {
+  background: #532618;
+  color: #f8edd9;
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 12px;
+}
+
+.tm-task-dur,
+.tm-task-clk {
+  font-size: 13px;
+  color: #532618;
+  opacity: 0.75;
+}
+
+.tm-result-task-text {
+  font-size: 13px;
+  color: #532618;
+  opacity: 0.7;
+  margin: 0 0 10px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.tm-click-path {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+
+.tm-chip {
+  background: #98623f;
+  color: #f8edd9;
+  border-radius: 10px;
+  padding: 3px 10px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.tm-chip em {
+  opacity: 0.7;
+  font-style: normal;
+}
+
+.tm-chip-search { background: #532618; }
+.tm-chip-breadcrumb { background: #7a4e32; }
+.tm-chip-nav-button { background: #6b4228; }
+.tm-chip-dropdown { background: #7a4e32; }
+.tm-chip-curl-card { background: #5e3520; }
+
+.tm-arrow {
+  color: #98623f;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.tm-recording-hint {
+  background: #98623f;
+  color: #f8edd9;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.tm-task-recording {
+  font-size: 13px;
+  color: #532618;
+  font-weight: bold;
+}
+
+.tm-chip-time {
+  opacity: 0.8;
+  font-size: 11px;
+  margin-right: 3px;
+}
+
+
 .hidden {
   display: none;
 }
