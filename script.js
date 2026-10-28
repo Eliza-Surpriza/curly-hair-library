@@ -22,6 +22,8 @@ const structure = {
             'Leave-in conditioner',
             'Curl cream recipe',
             'Hair gel',
+            'Lightweight gel',
+            'Sea salt spray',
             'Homemade flax-seed hair gel recipe',
             'Heat protectant',
             'Hair Oil'
@@ -63,6 +65,8 @@ const structure = {
             'Deep conditioning guide',
             'Tips for refreshing curls',
             'Tips for curly hair cuts',
+            'Protective styles',
+            'Layering products',
             'Chart of curl patterns'
           ],
           'Science': [
@@ -132,8 +136,12 @@ const structure = {
             'Mousse',
             'Hair oil',
             'Hair gel',
+            'Lightweight gel',
+            'Sea salt spray',
             'Homemade flax-seed hair gel recipe',
             'How to scrunch curls',
+            'Protective styles',
+            'Layering products',
             'Satin scrunchies',
             'Claw clip',
             'Tips for curly hair cuts',
@@ -149,6 +157,7 @@ const structure = {
           'Sleep': [
             'Silk pillowcase',
             'Silk bonnet',
+            'Protective styles',
             'Satin scrunchies',
             'Curly hair stylist influencer (professional experience)',
             'Influencer with curly hair (personal experience)',
@@ -163,6 +172,8 @@ const structure = {
             'Tips for refreshing curls',
             'Continuous spray bottle for water',
             'Hair oil',
+            'Lightweight gel',
+            'Sea salt spray',
             'Satin scrunchies',
             'Tips for curly hair cuts',
             'Chart of curl patterns',
@@ -259,7 +270,11 @@ const itemDescriptions = {
   '3C': 'Type 3C hair has tight, dense corkscrew curls, about the size of a straw or pencil. It shrinks a lot and tends to be dry, so layering rich moisture with styling products is key.',
   '4A': 'Type 4A hair forms tight, springy S-shaped coils, about the size of a crochet needle. It\'s soft and defined but delicate and prone to dryness. Regular moisture and gentle handling help it thrive.',
   '4B': 'Type 4B hair bends in sharp Z-shaped angles rather than forming defined coils. It\'s soft, fragile, and prone to shrinkage and dryness. Deep conditioning and protective styles help retain length.',
-  '4C': 'Type 4C hair has the tightest coils, often with little visible definition and the most shrinkage. It\'s densely packed and delicate, so moisture, gentle detangling, and protective styling are essential.'
+  '4C': 'Type 4C hair has the tightest coils, often with little visible definition and the most shrinkage. It\'s densely packed and delicate, so moisture, gentle detangling, and protective styling are essential.',
+  'Lightweight gel': 'Lightweight gel gives waves and loose curls soft hold without crunch. It\'s perfect for when you want definition but your curls get weighed down easily. Apply to damp hair, scrunch or rake it in, and let it dry for flexible hold and natural bounce.',
+  'Sea salt spray': 'Sea salt spray adds texture, grip, and volume, making waves more defined and bouncy. Perfect for tousled, beachy curls, it enhances your natural pattern without crunch. Use it on damp hair or as a refresh product between wash days.',
+  'Protective styles': 'Protective styles like braids, twists, buns, and other low-manipulation hairstyles minimize friction and damage while you sleep or go about your day. They\'re excellent for length retention and giving your curls a break from daily styling. Keep your scalp clean and moisturized, and alternate styles to prevent tension.',
+  'Layering products': 'Layering means applying multiple products strategically to work better together. Try the LOC or LCO method—layering a leave-in, oil, and cream in different orders to find what your curls love. Proper layering helps curls hold moisture, form better, and look more defined.'
 };
 
 const searchTags = {
@@ -322,7 +337,71 @@ const searchTags = {
   '3C': "3C; type 3C; curly hair; tight curls; corkscrew curls; dense curls; shrinkage; dry curls; layering products; rich moisture; styling products; curl type",
   '4A': "4A; type 4A; coily hair; coils; tight coils; springy coils; S-shaped; soft hair; defined coils; delicate; dry hair; dryness; moisture; gentle handling; curl type",
   '4B': "4B; type 4B; coily hair; coils; kinky hair; Z-shaped; Z pattern; soft hair; fragile; shrinkage; dry hair; dryness; deep conditioning; protective styles; length retention; breakage; curl type",
-  '4C': "4C; type 4C; coily hair; coils; kinky hair; tightest coils; shrinkage; dry hair; dryness; dense hair; delicate; fragile; moisture; gentle detangling; protective styles; low definition; curl type"
+  '4C': "4C; type 4C; coily hair; coils; kinky hair; tightest coils; shrinkage; dry hair; dryness; dense hair; delicate; fragile; moisture; gentle detangling; protective styles; low definition; curl type",
+  'Lightweight gel': "lightweight gel; light gel; light hold; soft hold; flexible hold; wavy hair; waves; fine hair; definition; frizzy; not crunchy; no crunch; humidity; styling",
+  'Sea salt spray': "sea salt spray; texture spray; texture; beachy waves; waves; defined waves; bouncy; grip; tousled; volume; natural texture; enhance; refresh",
+  'Protective styles': "protective styles; protective styling; braids; twists; buns; low manipulation; low manipulation style; length retention; protective; sleep; grow hair; minimize damage; breakage",
+  'Layering products': "layering; layer products; layering products; product order; what order; LOC method; LCO method; stack products; multiple products; thin hair; fine hair; thin curls; build up results; moisture"
+};
+
+const relatedItems = {
+  'Sulfate-free shampoo': "Hydrating Shampoo; Clarifying & Detox Shampoo; Curl friendly shampoo and conditioner bars; Rinse-out conditioner; Guidance for scalp health; Common mistakes and myths",
+  'Clarifying & Detox Shampoo': "Sulfate-free shampoo; Hydrating Shampoo; Guidance for scalp health; Common mistakes and myths; Deep conditioning guide",
+  'Hydrating Shampoo': "Sulfate-free shampoo; Clarifying & Detox Shampoo; Rinse-out conditioner; Curl friendly shampoo and conditioner bars; How your hair holds moisture",
+  'Rinse-out conditioner': "Hair mask/deep conditioner; Leave-in conditioner; \"Squish to condish\" method; Detangling instructions; Hydrating Shampoo; Deep conditioning guide; detangling comb",
+  'Hair mask/deep conditioner': "Deep conditioning guide; Rinse-out conditioner; Leave-in conditioner; How your hair holds moisture; Heat protectant; \"Squish to condish\" method; Protective styles; Towel bonnet",
+  'Leave-in conditioner': "Rinse-out conditioner; Layering products; Detangling instructions; Curl Cream; Hair Oil; Tips for refreshing curls; \"Plopping\" instructions; Protective styles; detangling comb; Continuous spray bottle for water; Silk bonnet",
+  'Curl friendly shampoo and conditioner bars': "Sulfate-free shampoo; Hydrating Shampoo; Rinse-out conditioner; Clarifying & Detox Shampoo",
+  'Mousse': "Lightweight gel; Sea salt spray; Hair gel; How to scrunch curls; 2A; How to use a diffuser; Finger styling instructions; \"Plopping\" instructions; Diffuser; Curl defining brush",
+  'Curl Cream': "Hair gel; Leave-in conditioner; Curl cream recipe; Layering products; Curl defining brush; Finger styling instructions; How to scrunch curls; Tips for refreshing curls; \"Plopping\" instructions; Continuous spray bottle for water; Microfiber hair towel; Cotton t-shirt",
+  'Hair gel': "Flaxseed hair gel recipe; Lightweight gel; Curl Cream; Mousse; How to scrunch curls; Layering products; Finger styling instructions; \"Plopping\" instructions; Tips for refreshing curls; How to use a diffuser; Curl defining brush; Diffuser; Microfiber hair towel; Cotton t-shirt",
+  'Heat protectant': "Diffuser; How to use a diffuser; How your hair holds moisture; Common mistakes and myths; Leave-in conditioner",
+  'Hair Oil': "Layering products; Leave-in conditioner; Tips for refreshing curls; How your hair holds moisture; Curl Cream; Protective styles; Silk bonnet; Satin scrunchie",
+  'Curl cream recipe': "Curl Cream; Flaxseed hair gel recipe; Hair gel; Layering products",
+  'Flaxseed hair gel recipe': "Hair gel; Lightweight gel; Curl cream recipe; Curl Cream; How to scrunch curls; Finger styling instructions; \"Plopping\" instructions; Layering products; Curl defining brush",
+  'Curl defining brush': "Curl Cream; Hair gel; Finger styling instructions; How to scrunch curls; detangling comb; Flaxseed hair gel recipe; Lightweight gel; Mousse; Tips for refreshing curls; Continuous spray bottle for water",
+  'detangling comb': "Detangling instructions; Curl defining brush; Rinse-out conditioner; \"Squish to condish\" method; Leave-in conditioner; Satin scrunchie",
+  'Continuous spray bottle for water': "Tips for refreshing curls; Detangling instructions; Curl Cream; Leave-in conditioner; detangling comb; Sea salt spray; Curl defining brush; Satin scrunchie; Claw clip",
+  'Diffuser': "How to use a diffuser; Heat protectant; Microfiber hair towel; \"Plopping\" instructions; How to scrunch curls; Hair gel; Lightweight gel; Mousse; Sea salt spray; Towel bonnet; Cotton t-shirt",
+  'Claw clip': "Satin scrunchie; Silk bonnet; Protective styles; Tips for refreshing curls; Continuous spray bottle for water; Silk pillowcase",
+  'Satin scrunchie': "Claw clip; Silk bonnet; Silk pillowcase; Protective styles; Tips for refreshing curls; Hair Oil; Continuous spray bottle for water; detangling comb",
+  'Silk bonnet': "Silk pillowcase; Satin scrunchie; Protective styles; Tips for refreshing curls; How your hair holds moisture; Hair Oil; Leave-in conditioner; Claw clip",
+  'Silk pillowcase': "Silk bonnet; Satin scrunchie; Protective styles; Tips for refreshing curls; Common mistakes and myths; Claw clip",
+  'Microfiber hair towel': "Cotton t-shirt; Towel bonnet; \"Plopping\" instructions; Diffuser; Common mistakes and myths; Curl Cream; Hair gel; How to use a diffuser",
+  'Towel bonnet': "Microfiber hair towel; Cotton t-shirt; \"Plopping\" instructions; Diffuser; Hair mask/deep conditioner",
+  'Cotton t-shirt': "Microfiber hair towel; Towel bonnet; \"Plopping\" instructions; Common mistakes and myths; Hair gel; Curl Cream; Diffuser",
+  '\"Plopping\" instructions': "Cotton t-shirt; Microfiber hair towel; Towel bonnet; How to use a diffuser; How to scrunch curls; Leave-in conditioner; Mousse; Curl Cream; Hair gel; Flaxseed hair gel recipe; Diffuser",
+  'How to use a diffuser': "Diffuser; Heat protectant; \"Plopping\" instructions; How to scrunch curls; Microfiber hair towel; Mousse; Hair gel; Lightweight gel; Sea salt spray",
+  'How to scrunch curls': "Finger styling instructions; Curl Cream; Hair gel; Mousse; \"Plopping\" instructions; How to use a diffuser; Lightweight gel; Curl defining brush; Diffuser",
+  'Finger styling instructions': "How to scrunch curls; Curl defining brush; Curl Cream; Hair gel; Detangling instructions; Mousse; Flaxseed hair gel recipe; Lightweight gel; Sea salt spray",
+  'Detangling instructions': "Detangling comb; Curl defining brush; Rinse-out conditioner; \"Squish to condish\" method; Leave-in conditioner; How your hair holds moisture; Microfiber hair towel",
+  '\"Squish to condish\" method': "Rinse-out conditioner; Detangling instructions; Leave-in conditioner; Deep conditioning guide; How your hair holds moisture; Hair mask/deep conditioner",
+  'Deep conditioning guide': "Hair mask/deep conditioner; Rinse-out conditioner; \"Squish to condish\" method; How your hair holds moisture; Heat protectant; Guidance for scalp health; Clarifying & Detox Shampoo",
+  'Tips for refreshing curls': "Continuous spray bottle for water; Sea salt spray; Hair Oil; Leave-in conditioner; Satin scrunchie; Claw clip; Silk bonnet; Silk pillowcase; How to scrunch curls; Lightweight gel",
+  'Tips for curly hair cuts': "Common mistakes and myths; Guidance for scalp health; Curly hair stylist influencer (professional experience); Influencer with curly hair (personal experience)",
+  'Chart of curl patterns': "Explanation of curly hair science; How your hair holds moisture; Guidance for scalp health; Common mistakes and myths",
+  'Explanation of curly hair science': "Chart of curl patterns; How your hair holds moisture; Guidance for scalp health",
+  'How your hair holds moisture': "Chart of curl patterns; Explanation of curly hair science; Hair mask/deep conditioner; Heat protectant; Guidance for scalp health; Common mistakes and myths; Hydrating Shampoo; \"Squish to condish\" method; Deep conditioning guide; Silk bonnet; Claw clip",
+  'Guidance for scalp health': "Sulfate-free shampoo; Clarifying & Detox Shampoo; Deep conditioning guide; How your hair holds moisture; Common mistakes and myths; Tips for curly hair cuts; Explanation of curly hair science",
+  'Common mistakes and myths': "Guidance for scalp health; How your hair holds moisture; Tips for curly hair cuts; Sulfate-free shampoo; Clarifying & Detox Shampoo; Silk pillowcase; Microfiber hair towel; Cotton t-shirt; How to use a diffuser",
+  'Curly hair stylist influencer (professional experience)': "Influencer with curly hair (personal experience); Tips for curly hair cuts",
+  'Influencer with curly hair (personal experience)': "Curly hair stylist influencer (professional experience); Tips for curly hair cuts",
+  '1A': "1B; 1C; 2A",
+  '1B': "1A; 1C; 2A; 2B",
+  '1C': "1A; 1B; 2A; 2B; 2C",
+  '2A': "1A; 1B; 1C; 2B; 2C; 3A; Mousse; Sea salt spray; Lightweight gel; How to scrunch curls; How to use a diffuser",
+  '2B': "2A; 2C; 3A; 3B; Mousse; Lightweight gel; Hair gel; How to scrunch curls",
+  '2C': "1C; 2A; 2B; 3A; 3B; 3C; Curl Cream; Hair gel; Layering products",
+  '3A': "2A; 2B; 2C; 3B; 3C; Curl Cream; Curl defining brush; Tips for refreshing curls; Mousse",
+  '3B': "2B; 2C; 3A; 3C; 4A; Curl Cream; Hair gel; Curl defining brush; Layering products",
+  '3C': "2C; 3A; 3B; 4A; 4B; Hair gel; Layering products; Protective styles; Deep conditioning guide",
+  '4A': "3B; 3C; 4B; 4C; Protective styles; Deep conditioning guide; Hair gel; Layering products; Moisture",
+  '4B': "3C; 4A; 4C; Protective styles; Deep conditioning guide; Hair mask/deep conditioner; Layering products",
+  '4C': "4A; 4B; Protective styles; Deep conditioning guide; Hair mask/deep conditioner; Protective styles; Detangling instructions; Gentle detangling",
+  'Lightweight gel': "Sea salt spray; Mousse; Hair gel; How to scrunch curls; Finger styling instructions; Layering products; Tips for refreshing curls; Curl Cream",
+  'Sea salt spray': "Lightweight gel; Mousse; Continuous spray bottle for water; Tips for refreshing curls; How to use a diffuser; Finger styling instructions",
+  'Protective styles': "Silk bonnet; Silk pillowcase; Satin scrunchie; Claw clip; Hair mask/deep conditioner; Deep conditioning guide; Tips for refreshing curls; Layering products",
+  'Layering products': "Curl Cream; Hair gel; Leave-in conditioner; Hair Oil; Hair mask/deep conditioner; Lightweight gel; Mousse; How to scrunch curls; Finger styling instructions; Tips for refreshing curls"
 };
 
 
@@ -367,7 +446,9 @@ function findItemLocation(itemName) {
 function renderNavigation() {
   const navHtml = `
     <div class="mode-controls">
-      <div class="quick-browse-label">* quick browse *</div>
+      <button class="home-icon-btn" id="home-icon-btn" aria-label="Go to home page">
+        <img src="mockup_images/home_icon.png" alt="home" class="home-icon-img" />
+      </button>
       <div class="nav-category-group">
         <div class="nav-category">
           <button class="mode-toggle" data-category="products">products</button>
@@ -427,6 +508,8 @@ function renderHome() {
     `)
     .join('');
 
+  const description = itemDescriptions['Chart of curl patterns'] || 'Curl patterns range from type 1 (straight) to type 4 (coily), with the letters A to C describing the tightness within each type.';
+
   return `
     ${renderNavigation()}
     <div class="squiggle-divider"></div>
@@ -436,6 +519,11 @@ function renderHome() {
     </div>
     <div class="squiggle-divider"></div>
     <p class="curl-section-label">* get to know your unique curls *</p>
+    <div class="detail-box">
+      <p>
+        ${description}
+      </p>
+    </div>
     <div class="item-grid">
       ${curlCardsHtml}
     </div>
@@ -560,6 +648,35 @@ function renderDetailPage(itemName) {
   // Get description from itemDescriptions object
   const description = itemDescriptions[itemName] || `Learn more about ${displayName}.`;
   
+  // Get related items if they exist
+  let relatedItemsHtml = '';
+  const relatedItemsList = relatedItems[itemName];
+  if (relatedItemsList) {
+    const relatedArray = relatedItemsList
+      .split(';')
+      .map(item => item.trim())
+      .filter(item => item.length > 0);
+    
+    if (relatedArray.length > 0) {
+      const relatedCardsHtml = relatedArray
+        .map(relatedItemName => `
+          <div class="item-card" data-item="${relatedItemName.replace(/"/g, '&quot;')}">
+            ${relatedItemName}
+          </div>
+        `)
+        .join('');
+      
+      relatedItemsHtml = `
+        <div class="related-items-section">
+          <h2 class="related-items-heading">* see related items *</h2>
+          <div class="item-grid">
+            ${relatedCardsHtml}
+          </div>
+        </div>
+      `;
+    }
+  }
+  
   return `
     ${renderNavigation()}
     <div class="squiggle-divider"></div>
@@ -570,6 +687,7 @@ function renderDetailPage(itemName) {
         ${description}
       </p>
     </div>
+    ${relatedItemsHtml}
   `;
 }
 
@@ -850,6 +968,29 @@ function render() {
 }
 
 function attachEventListeners() {
+  // Home icon button - navigate to home on click
+  const homeIconBtn = document.getElementById('home-icon-btn');
+  if (homeIconBtn) {
+    const homeIconImg = homeIconBtn.querySelector('img');
+    
+    homeIconBtn.addEventListener('click', () => {
+      state.currentView = 'home';
+      render();
+    });
+    
+    homeIconBtn.addEventListener('mouseenter', () => {
+      if (homeIconImg) {
+        homeIconImg.src = 'mockup_images/hover_home_icon.png';
+      }
+    });
+    
+    homeIconBtn.addEventListener('mouseleave', () => {
+      if (homeIconImg) {
+        homeIconImg.src = 'mockup_images/home_icon.png';
+      }
+    });
+  }
+
   // Navigation category buttons - navigate to category page on click
   document.querySelectorAll('.mode-toggle').forEach(button => {
     button.addEventListener('click', () => {
