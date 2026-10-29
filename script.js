@@ -1231,6 +1231,57 @@ window.addEventListener('popstate', (e) => {
   _isPopState = false;
 });
 
+// Parse hash on page load
+function handleHashChange() {
+  const hash = window.location.hash.slice(1); // Remove the '#'
+  
+  if (!hash) {
+    // No hash - show home
+    state.currentView = 'home';
+  } else {
+    const parts = hash.split('/');
+    
+    if (parts[0] === 'education' || parts[0] === 'products' || parts[0] === 'tools') {
+      const category = parts[0];
+      const categoryMap = {
+        'education': 'Education',
+        'products': 'Product',
+        'tools': 'Tools'
+      };
+      
+      if (parts.length === 1) {
+        // Just category
+        state.currentView = 'categoryGroup';
+        state.currentCategory = categoryMap[category];
+      } else if (parts.length === 2) {
+        // category/group
+        state.currentView = 'category';
+        state.currentCategory = categoryMap[category];
+        // Capitalize first letter of group name (e.g., "instructions" -> "Instructions")
+        const groupName = decodeURIComponent(parts[1]);
+        state.currentGroup = groupName.charAt(0).toUpperCase() + groupName.slice(1);
+      } else if (parts.length >= 3) {
+        // category/group/item
+        state.currentView = 'detail';
+        state.currentItem = decodeURIComponent(parts[2]);
+      }
+    } else if (parts[0] === 'search') {
+      state.currentView = 'search';
+      state.searchQuery = parts.length > 1 ? decodeURIComponent(parts[1]) : '';
+    } else if (hash === 'chart') {
+      state.currentView = 'chart';
+    }
+  }
+}
+
 // Initialize
+handleHashChange();
 render();
+
+// Listen for hash changes
+window.addEventListener('hashchange', () => {
+  _isPopState = false;
+  handleHashChange();
+  render();
+});
 
