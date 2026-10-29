@@ -589,12 +589,12 @@ function renderHome() {
   return `
     ${renderNavigation()}
     <div class="squiggle-divider"></div>
-    <p class="routine-label">Find help at every step of the routine</p>
+    <p class="routine-label">find help at every step of the routine</p>
     <div class="routine-grid">
       ${routinesHtml}
     </div>
     <div class="squiggle-divider"></div>
-    <p class="curl-section-label">Get to know your unique curls</p>
+    <p class="curl-section-label">get to know your unique curls</p>
     <div class="detail-box">
       <p>
         ${description}
