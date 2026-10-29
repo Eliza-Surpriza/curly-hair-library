@@ -467,12 +467,12 @@ const influencerData = {
 // Videos linked to influencers by their YouTube URL
 const influencerVideos = {
   'https://m.youtube.com/@curlswithkymberly': ['6hS3pTxQezU'],
-  'https://www.youtube.com/@CurlyCulture': [],
+  'https://www.youtube.com/@CurlyCulture': ['JJVL4GfLZXk'],
   'https://m.youtube.com/@MarisasCurls': ['9S_mdftZutU'],
   'https://m.youtube.com/@mo_styles': ['qZg4JqCoHXw'],
   'https://m.youtube.com/@hanzcurls': ['WBX9hhhT7SM'],
   'https://www.youtube.com/@WavyCurlyAli': ['k25sZSjSBiw'],
-  'https://www.youtube.com/@YolianaGamboa': []
+  'https://www.youtube.com/@YolianaGamboa': ['4SJ4d-35ya0']
 };
 
 const state = {
@@ -1391,7 +1391,15 @@ function attachEventListeners() {
         if (categoryData && categoryData.groups[target]) {
           state.currentView = 'category';
           state.currentGroup = target;
+        } else {
+          // Fallback: treat as a detail page item (for influencers and regular items)
+          state.currentView = 'detail';
+          state.currentItem = target;
         }
+      } else {
+        // If no currentCategory set, assume it's a detail item
+        state.currentView = 'detail';
+        state.currentItem = target;
       }
       render();
     });
