@@ -590,6 +590,63 @@ button {
   text-transform: lowercase;
 }
 
+.videos-section {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 20px;
+}
+
+.videos-heading {
+  font-size: 21px;
+  color: #532618;
+  text-align: center;
+  margin-bottom: 24px;
+  margin-top: 0;
+  text-transform: lowercase;
+}
+
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.video-embed-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f8edd9;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.video-embed-container iframe {
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video-link {
+  align-self: center;
+  padding: 10px 20px;
+  background: #98623f;
+  color: #f8edd9;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.video-link:hover {
+  background: #532618;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
 .task-title {
   font-size: 18px;
   font-weight: 700;

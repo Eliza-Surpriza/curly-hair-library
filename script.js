@@ -404,6 +404,14 @@ const relatedItems = {
   'Layering products': "Curl Cream; Hair gel; Leave-in conditioner; Hair Oil; Hair mask/deep conditioner; Lightweight gel; Mousse; How to scrunch curls; Finger styling instructions; Tips for refreshing curls"
 };
 
+// YouTube videos linked to items
+// Array of video IDs per item (extracted from videos and influencers CSV)
+const itemVideos = {
+  '"Plopping" instructions': ['6hS3pTxQezU'],
+  '"Squish to condish" method': ['9S_mdftZutU'],
+  'detangling instructions': ['qZg4JqCoHXw', 'WBX9hhhT7SM'],
+  'Finger styling instructions': ['k25sZSjSBiw']
+};
 
 const state = {
   currentView: 'home',
@@ -677,6 +685,39 @@ function renderDetailPage(itemName) {
     }
   }
   
+  // Get videos if they exist
+  let videosHtml = '';
+  const videoIds = itemVideos[itemName];
+  if (videoIds && videoIds.length > 0) {
+    const videosCardsHtml = videoIds
+      .map(videoId => `
+        <div class="video-embed-container">
+          <iframe
+            width="100%"
+            height="315"
+            src="https://www.youtube.com/embed/${videoId}"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+          <a href="https://youtube.com/watch?v=${videoId}" target="_blank" class="video-link">
+            Watch on YouTube
+          </a>
+        </div>
+      `)
+      .join('');
+    
+    videosHtml = `
+      <div class="videos-section">
+        <h2 class="videos-heading">* related videos *</h2>
+        <div class="videos-grid">
+          ${videosCardsHtml}
+        </div>
+      </div>
+    `;
+  }
+  
   return `
     ${renderNavigation()}
     <div class="squiggle-divider"></div>
@@ -687,6 +728,7 @@ function renderDetailPage(itemName) {
         ${description}
       </p>
     </div>
+    ${videosHtml}
     ${relatedItemsHtml}
   `;
 }
