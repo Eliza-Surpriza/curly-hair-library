@@ -548,12 +548,6 @@ button {
   text-transform: uppercase;
 }
 
-.page-title::before,
-.page-title::after {
-  content: '*';
-  margin: 0 10px;
-  color: #532618;
-}
 
 .detail-box {
   border: none;
