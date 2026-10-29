@@ -409,7 +409,7 @@ const relatedItems = {
 const itemVideos = {
   '"Plopping" instructions': ['6hS3pTxQezU'],
   '"Squish to condish" method': ['9S_mdftZutU'],
-  'detangling instructions': ['qZg4JqCoHXw', 'WBX9hhhT7SM'],
+  'Detangling instructions': ['qZg4JqCoHXw', 'WBX9hhhT7SM'],
   'Finger styling instructions': ['k25sZSjSBiw']
 };
 
