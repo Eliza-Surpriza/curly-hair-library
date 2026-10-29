@@ -615,7 +615,7 @@ function renderCategoryPage(category, group) {
   const items = categoryData.groups[group];
   const itemsHtml = items
     .map(item => `
-      <div class="item-card" data-item='${item}'>
+      <div class="item-card" data-item="${item.replace(/"/g, '&quot;')}">
         ${item}
       </div>
     `)
@@ -641,7 +641,7 @@ function renderRoutinePage(routine) {
   const items = routineData.groups[routine] || [];
   const itemsHtml = items
     .map(item => `
-      <div class="item-card" data-item='${item}'>
+      <div class="item-card" data-item="${item.replace(/"/g, '&quot;')}">
         ${item}
       </div>
     `)
@@ -823,7 +823,7 @@ function renderInfluencerDetailPage(influencerName) {
   if (relatedItemsList.length > 0) {
     const relatedCardsHtml = relatedItemsList
       .map(relatedItem => `
-        <div class="item-card" data-item='${relatedItem}'>
+        <div class="item-card" data-item="${relatedItem.replace(/"/g, '&quot;')}">
           ${relatedItem}
         </div>
       `)
