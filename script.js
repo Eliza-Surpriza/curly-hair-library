@@ -900,6 +900,23 @@ function isCurlPattern(name) {
   return /^[1-4][A-C]$/.test(name);
 }
 
+// Get the correctly capitalized influencer name from influencerData
+// Handles case-insensitive lookup for influencer names
+function getInfluencerName(itemName) {
+  if (influencerData[itemName]) {
+    return itemName; // Exact match
+  }
+  
+  // Try case-insensitive match
+  for (const key in influencerData) {
+    if (key.toLowerCase() === itemName.toLowerCase()) {
+      return key; // Return the correctly capitalized key
+    }
+  }
+  
+  return null; // Not found
+}
+
 // Levenshtein distance for fuzzy matching (typo tolerance)
 function getLevenshteinDistance(str1, str2) {
   const matrix = [];
@@ -1231,9 +1248,10 @@ function render() {
   } else if (state.currentView === 'routine') {
     content = renderRoutinePage(state.currentRoutine);
   } else if (state.currentView === 'detail') {
-    // Check if the item is an influencer
-    if (influencerData[state.currentItem]) {
-      content = renderInfluencerDetailPage(state.currentItem);
+    // Check if the item is an influencer (using case-insensitive lookup)
+    const influencerName = getInfluencerName(state.currentItem);
+    if (influencerName) {
+      content = renderInfluencerDetailPage(influencerName);
     } else {
       content = renderDetailPage(state.currentItem);
     }
