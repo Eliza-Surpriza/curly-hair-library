@@ -77,8 +77,13 @@ const structure = {
             'Common mistakes and myths'
           ],
           'Influencers': [
-            'Curly hair stylist influencer (professional experience)',
-            'Influencer with curly hair (personal experience)'
+            'Curls With Kymberly',
+            'Curly Culture',
+            'Marisa\'s Curls',
+            'Mo Styles',
+            'Hanzcurls',
+            'Wavy Curly Ali',
+            'Yoliana Gamboa'
           ]
         }
       }
@@ -413,6 +418,63 @@ const itemVideos = {
   'Finger styling instructions': ['k25sZSjSBiw']
 };
 
+// Influencer data (YouTube channel creators)
+const influencerData = {
+  'Curls With Kymberly': {
+    url: 'https://m.youtube.com/@curlswithkymberly',
+    description: 'Kymberly shares curly hair tutorials, routines, and tips, plus relatable shorts that make the journey fun. Her content leans toward mixed curly hair and covers types 3A through 3C. Stop by for diffusing, washing, and cutting ideas you can try at home.',
+    tags: 'Kymberly; Kymberly McCalla; curls with Kymberly; curly hair tutorials; curly hair routine; wash day routine; diffuser tutorial; haircut tips; mixed curly hair; mixed hair; 3A; 3B; 3C; long curly hair; shorts; relatable; beginner routine; how to style curls; YouTube',
+    relatedItems: 'Chart of curl patterns; 3A; 3B; 3C; Diffuser; How to use a diffuser; Tips for curly hair cuts; Curl Cream; Hair gel'
+  },
+  'Curly Culture': {
+    url: 'https://www.youtube.com/@CurlyCulture',
+    description: 'Curly Culture is a welcoming community for every curl type, from 2A all the way to 4C. Whether your hair is wavy, springy, or tightly coiled, you\'ll find a place here. Come join the fun and connect with fellow curl friends.',
+    tags: 'Curly Culture; curl community; community; curl friends; all curl types; 2A; 2B; 2C; 3A; 3B; 3C; 4A; 4B; 4C; wavy; curly; coily; beginner; where do I start; what\'s my curl type; learn curl care; support; YouTube',
+    relatedItems: 'Chart of curl patterns; Explanation of curly hair science; Common mistakes and myths; Protective styles'
+  },
+  'Marisa\'s Curls': {
+    url: 'https://m.youtube.com/@MarisasCurls',
+    description: 'Marisa is here to help you reach your healthiest wavy or curly hair. Her channel is packed with product reviews and styling techniques, so you can see what works before you buy. It\'s a great stop for practical, hands-on curl care guidance.',
+    tags: 'Marisa; Marisa\'s Curls; product reviews; curl product reviews; which products should I buy; best products for curls; products not working; curly girl method; healthy curls; wavy hair; curly hair; styling techniques; how to style; YouTube',
+    relatedItems: 'Curl Cream; Hair gel; Mousse; Lightweight gel; Leave-in conditioner; Sulfate-free shampoo; How to scrunch curls; Layering products; Common mistakes and myths'
+  },
+  'Mo Styles': {
+    url: 'https://m.youtube.com/@mo_styles',
+    description: 'Mo shares her own experience with curly hair through friendly videos, along with tutorials for lots of different hairstyles. She\'s known for her kind attitude, which makes her easy to learn from. Tune in for approachable tips and style inspiration.',
+    tags: 'Mo; Mo Styles; hairstyle tutorials; hairstyles for curly hair; easy hairstyles; updo; quick hairstyle; how to style curls; style ideas; inspiration; personal experience; curly hair journey; kind; friendly; beginner; all things hair; YouTube',
+    relatedItems: 'Claw clip; Satin scrunchie; Finger styling instructions; Protective styles; How to scrunch curls; Tips for refreshing curls'
+  },
+  'Hanzcurls': {
+    url: 'https://m.youtube.com/@hanzcurls',
+    description: 'Hanz shares tips, tricks, and inspiration for wavy and curly hair. Her videos cover curly girl method basics, daily routines, and natural haircare, with a special focus on curly ginger hair. It\'s a bright, helpful channel for anyone building their own routine.',
+    tags: 'Hanz; hanzcurls; wavy hair; curly hair; wavy curly hair tips; curl tips and tricks; curly girl method; curly hair routine; natural curls; ginger hair; red hair; curly ginger hair; inspiration; haircare; YouTube',
+    relatedItems: 'Chart of curl patterns; Sulfate-free shampoo; Leave-in conditioner; Lightweight gel; Mousse; Tips for refreshing curls'
+  },
+  'Wavy Curly Ali': {
+    url: 'https://www.youtube.com/@WavyCurlyAli',
+    description: 'Ali is a healthy hair enthusiast who began her own hair journey in 2018. She shares her tricks to help you love your hair as it grows naturally, and she\'s built a warm online community for learning together. Come along and embrace your natural texture.',
+    tags: 'Ali; Wavy Curly Ali; healthy hair journey; healthy hair; love your natural hair; embrace natural texture; natural hair care; hair community; beginner; getting started; tips and tricks; since 2018; YouTube',
+    relatedItems: 'Explanation of curly hair science; How your hair holds moisture; Deep conditioning guide; Guidance for scalp health; Common mistakes and myths'
+  },
+  'Yoliana Gamboa': {
+    url: 'https://www.youtube.com/@YolianaGamboa',
+    description: 'Yoliana is a television and theater actress who has been sharing hair, skin, and beauty tips for over six years. Her videos include homemade treatments and masks for dry or damaged hair, with advice for curly, Afro, and smooth textures. Her videos are in Spanish.',
+    tags: 'Yoliana; Yoliana Gamboa; Spanish; en español; videos in Spanish; Spanish language; homemade treatments; DIY; remedios caseros; recetas; hair masks; dry hair; damaged hair; Afro hair; curly hair; smooth hair; beauty tips; skin care; YouTube',
+    relatedItems: 'Curl cream recipe; Flaxseed hair gel recipe; Hair mask/deep conditioner; Deep conditioning guide; Hair Oil'
+  }
+};
+
+// Videos linked to influencers by their YouTube URL
+const influencerVideos = {
+  'https://m.youtube.com/@curlswithkymberly': ['6hS3pTxQezU'],
+  'https://www.youtube.com/@CurlyCulture': [],
+  'https://m.youtube.com/@MarisasCurls': ['9S_mdftZutU'],
+  'https://m.youtube.com/@mo_styles': ['qZg4JqCoHXw'],
+  'https://m.youtube.com/@hanzcurls': ['WBX9hhhT7SM'],
+  'https://www.youtube.com/@WavyCurlyAli': ['k25sZSjSBiw'],
+  'https://www.youtube.com/@YolianaGamboa': []
+};
+
 const state = {
   currentView: 'home',
   navigationStack: [],
@@ -733,6 +795,101 @@ function renderDetailPage(itemName) {
   `;
 }
 
+function renderInfluencerDetailPage(influencerName) {
+  const influencer = influencerData[influencerName];
+  if (!influencer) {
+    return renderHome();
+  }
+
+  // Build breadcrumb
+  let breadcrumbPath = ['home', 'Education', 'Influencers', influencerName];
+  
+  const description = influencer.description;
+  
+  // Get related items - parse the comma-separated list
+  const relatedItemsList = influencer.relatedItems
+    .split(';')
+    .map(item => item.trim())
+    .filter(item => item.length > 0);
+  
+  // Create related items cards
+  let relatedItemsHtml = '';
+  if (relatedItemsList.length > 0) {
+    const relatedCardsHtml = relatedItemsList
+      .map(relatedItem => `
+        <div class="item-card" data-item='${relatedItem}'>
+          ${relatedItem}
+        </div>
+      `)
+      .join('');
+    
+    relatedItemsHtml = `
+      <div class="related-items-section">
+        <h2 class="related-items-heading">* see related items *</h2>
+        <div class="item-grid">
+          ${relatedCardsHtml}
+        </div>
+      </div>
+    `;
+  }
+  
+  // Get videos - fetch from influencerVideos using the influencer URL
+  let videosHtml = '';
+  const influencerUrl = influencer.url;
+  const videoIds = influencerVideos[influencerUrl];
+  if (videoIds && videoIds.length > 0) {
+    const videosCardsHtml = videoIds
+      .map(videoId => `
+        <div class="video-embed-container">
+          <iframe
+            width="100%"
+            height="315"
+            src="https://www.youtube.com/embed/${videoId}"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+          <a href="https://youtube.com/watch?v=${videoId}" target="_blank" class="video-link">
+            Watch on YouTube
+          </a>
+        </div>
+      `)
+      .join('');
+    
+    videosHtml = `
+      <div class="videos-section">
+        <h2 class="videos-heading">* related videos *</h2>
+        <div class="videos-grid">
+          ${videosCardsHtml}
+        </div>
+      </div>
+    `;
+  }
+  
+  // Channel link button
+  const channelLinkHtml = `
+    <div class="channel-link-section">
+      <a href="${influencerUrl}" target="_blank" class="channel-link-button">Visit YouTube Channel</a>
+    </div>
+  `;
+  
+  return `
+    ${renderNavigation()}
+    <div class="squiggle-divider"></div>
+    ${renderBreadcrumb(breadcrumbPath)}
+    <h1 class="page-title">* ${influencerName} *</h1>
+    <div class="detail-box">
+      <p>
+        ${description}
+      </p>
+    </div>
+    ${channelLinkHtml}
+    ${videosHtml}
+    ${relatedItemsHtml}
+  `;
+}
+
 function isCurlPattern(name) {
   return /^[1-4][A-C]$/.test(name);
 }
@@ -873,6 +1030,72 @@ function searchItems(query) {
   // Sort by score (relevance)
   results.sort((a, b) => b.score - a.score);
   
+  // Search in influencers
+  for (const [influencerName, influencerInfo] of Object.entries(influencerData)) {
+    let score = 0;
+    const influencerLower = influencerName.toLowerCase();
+    
+    // Exact match: highest score
+    if (influencerLower === queryLower) {
+      score = 1000;
+    }
+    // Contains match: high score
+    else if (influencerLower.includes(queryLower)) {
+      score = 500;
+    }
+    // Fuzzy match: medium score
+    else if (fuzzyMatch(query, influencerName)) {
+      score = 250;
+    }
+    // Check description
+    else if (influencerInfo.description.toLowerCase().includes(queryLower)) {
+      score = 200;
+    }
+    
+    // Check search tags
+    if (score === 0 && influencerInfo.tags) {
+      const tags = influencerInfo.tags.split(';').map(tag => tag.trim().toLowerCase());
+      
+      // Check each extracted keyword against tags
+      for (const keyword of queryKeywords) {
+        for (const tag of tags) {
+          if (tag === keyword) {
+            score = Math.max(score, 450); // Exact tag match - high score
+          } else if (tag.includes(keyword)) {
+            score = Math.max(score, 350); // Partial tag match
+          } else if (fuzzyMatch(keyword, tag)) {
+            score = Math.max(score, 300); // Fuzzy tag match
+          }
+        }
+      }
+      
+      // Also check if full query matches any tag
+      for (const tag of tags) {
+        if (tag === queryLower) {
+          score = Math.max(score, 450); // Exact tag match
+          break;
+        } else if (tag.includes(queryLower)) {
+          score = Math.max(score, 350);
+        } else if (fuzzyMatch(query, tag)) {
+          score = Math.max(score, 300);
+        }
+      }
+    }
+    
+    if (score > 0) {
+      results.push({
+        name: influencerName,
+        category: 'Education',
+        group: 'Influencers',
+        score: score,
+        isInfluencer: true
+      });
+    }
+  }
+
+  // Re-sort by score (relevance) after adding influencers
+  results.sort((a, b) => b.score - a.score);
+  
   // Remove duplicates (same item name)
   const seen = new Set();
   return results.filter(result => {
@@ -1002,7 +1225,12 @@ function render() {
   } else if (state.currentView === 'routine') {
     content = renderRoutinePage(state.currentRoutine);
   } else if (state.currentView === 'detail') {
-    content = renderDetailPage(state.currentItem);
+    // Check if the item is an influencer
+    if (influencerData[state.currentItem]) {
+      content = renderInfluencerDetailPage(state.currentItem);
+    } else {
+      content = renderDetailPage(state.currentItem);
+    }
   }
 
   app.innerHTML = content;

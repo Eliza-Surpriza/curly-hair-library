@@ -647,6 +647,32 @@ button {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+.channel-link-section {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.channel-link-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #916042;
+  color: #f8edd9;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border: none;
+}
+
+.channel-link-button:hover {
+  background: #532618;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
 .task-title {
   font-size: 18px;
   font-weight: 700;
