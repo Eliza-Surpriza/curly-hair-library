@@ -589,12 +589,12 @@ function renderHome() {
   return `
     ${renderNavigation()}
     <div class="squiggle-divider"></div>
-    <p class="routine-label">* find help at every step of the routine *</p>
+    <p class="routine-label">Find help at every step of the routine</p>
     <div class="routine-grid">
       ${routinesHtml}
     </div>
     <div class="squiggle-divider"></div>
-    <p class="curl-section-label">* get to know your unique curls *</p>
+    <p class="curl-section-label">Get to know your unique curls</p>
     <div class="detail-box">
       <p>
         ${description}
@@ -684,7 +684,7 @@ function renderChartPage() {
     ${renderNavigation()}
     <div class="squiggle-divider"></div>
     ${renderBreadcrumb(breadcrumbPath)}
-    <h1 class="page-title">* chart of curl types *</h1>
+    <h1 class="page-title">Chart of curl types</h1>
     <div class="detail-box">
       <p>
         ${description}
@@ -744,7 +744,7 @@ function renderDetailPage(itemName) {
       
       relatedItemsHtml = `
         <div class="related-items-section">
-          <h2 class="related-items-heading">* see related items *</h2>
+          <h2 class="related-items-heading">See related items</h2>
           <div class="item-grid">
             ${relatedCardsHtml}
           </div>
@@ -778,7 +778,7 @@ function renderDetailPage(itemName) {
     
     videosHtml = `
       <div class="videos-section">
-        <h2 class="videos-heading">* related videos *</h2>
+        <h2 class="videos-heading">Related videos</h2>
         <div class="videos-grid">
           ${videosCardsHtml}
         </div>
@@ -831,7 +831,7 @@ function renderInfluencerDetailPage(influencerName) {
     
     relatedItemsHtml = `
       <div class="related-items-section">
-        <h2 class="related-items-heading">* see related items *</h2>
+        <h2 class="related-items-heading">See related items</h2>
         <div class="item-grid">
           ${relatedCardsHtml}
         </div>
@@ -865,7 +865,7 @@ function renderInfluencerDetailPage(influencerName) {
     
     videosHtml = `
       <div class="videos-section">
-        <h2 class="videos-heading">* related videos *</h2>
+        <h2 class="videos-heading">Related videos</h2>
         <div class="videos-grid">
           ${videosCardsHtml}
         </div>
@@ -884,7 +884,7 @@ function renderInfluencerDetailPage(influencerName) {
     ${renderNavigation()}
     <div class="squiggle-divider"></div>
     ${renderBreadcrumb(breadcrumbPath)}
-    <h1 class="page-title">* ${influencerName} *</h1>
+    <h1 class="page-title">${influencerName}</h1>
     <div class="detail-box">
       <p>
         ${description}
