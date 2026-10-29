@@ -279,7 +279,9 @@ const itemDescriptions = {
   'Lightweight gel': 'Lightweight gel gives waves and loose curls soft hold without crunch. It\'s perfect for when you want definition but your curls get weighed down easily. Apply to damp hair, scrunch or rake it in, and let it dry for flexible hold and natural bounce.',
   'Sea salt spray': 'Sea salt spray adds texture, grip, and volume, making waves more defined and bouncy. Perfect for tousled, beachy curls, it enhances your natural pattern without crunch. Use it on damp hair or as a refresh product between wash days.',
   'Protective styles': 'Protective styles like braids, twists, buns, and other low-manipulation hairstyles minimize friction and damage while you sleep or go about your day. They\'re excellent for length retention and giving your curls a break from daily styling. Keep your scalp clean and moisturized, and alternate styles to prevent tension.',
-  'Layering products': 'Layering means applying multiple products strategically to work better together. Try the LOC or LCO method—layering a leave-in, oil, and cream in different orders to find what your curls love. Proper layering helps curls hold moisture, form better, and look more defined.'
+  'Layering products': 'Layering means applying multiple products strategically to work better together. Try the LOC or LCO method—layering a leave-in, oil, and cream in different orders to find what your curls love. Proper layering helps curls hold moisture, form better, and look more defined.',
+  'curl cream recipe': 'Making your own curl cream is easy and budget-friendly. Blend a little shea butter, aloe vera gel, and a light oil like jojoba until creamy. Store it in a clean jar in the fridge, use it within a week or two, and apply a small amount to damp hair.',
+  'homemade flax-seed hair gel recipe': 'Flaxseed gel is a natural, flexible-hold styler. Simmer about 1/4 cup of flaxseeds in 2 cups of water until it thickens, then strain it through a fine mesh or cloth while warm. Cool it, add a little aloe if you like, and refrigerate for up to two weeks.'
 };
 
 const searchTags = {
@@ -415,7 +417,11 @@ const itemVideos = {
   '"Plopping" instructions': ['6hS3pTxQezU'],
   '"Squish to condish" method': ['9S_mdftZutU'],
   'Detangling instructions': ['qZg4JqCoHXw', 'WBX9hhhT7SM'],
-  'Finger styling instructions': ['k25sZSjSBiw']
+  'Finger styling instructions': ['k25sZSjSBiw'],
+  'Curl cream recipe': ['4SJ4d-35ya0'],
+  'curl cream recipe': ['4SJ4d-35ya0'],
+  'Homemade flax-seed hair gel recipe': ['JJVL4GfLZXk'],
+  'homemade flax-seed hair gel recipe': ['JJVL4GfLZXk']
 };
 
 // Influencer data (YouTube channel creators)
